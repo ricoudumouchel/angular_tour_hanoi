@@ -1,0 +1,16 @@
+.jeu
+{
+    display: flex; 
+    flex-direction : row ;
+    justify-content: space-between ;
+    width: 800px;
+
+}
+form , label , progress 
+{
+    padding: 10px ;
+}
+
+#id_progression {
+    padding: 20px ;
+}

@@ -1,0 +1,4 @@
+<div [ngClass]="'tour'" (drop)="drop($event)" (dragover)="allowDrop($event) ">
+    <app-disque *ngFor="let i of tourX ;" [un_disque]="i"> </app-disque>         
+</div>
+ 

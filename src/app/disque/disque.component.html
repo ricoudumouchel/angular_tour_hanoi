@@ -1,0 +1,1 @@
+<div [ngClass]="'disque'" [ngStyle]="{'background-color' : un_disque.color , 'width' : un_disque.size }" [draggable]='un_disque.draggable' [id]='un_disque.valeur' (dragstart)="dragstart($event)">{{un_disque.valeur}}</div>

@@ -1,0 +1,43 @@
+
+<div>
+
+    <h1>Tour de Hanoi by ricou</h1>    
+    <form (change)='changementNbDisque()' >
+        <label for="disques">Choissez le nombre de disques :</label>
+        <select  [(ngModel)]='disques' name='disques'>
+            <option *ngFor="let d of liste_disques" value="{{d}}">
+                {{d}}
+            </option>
+        </select>
+    </form>
+
+    <form>
+        <label for="periode">Fréquence déplacement en milli seconde</label>
+        <input [(ngModel)]='nb_deplacement_par_milli' name="periode" type="number" min="1" max="1000" />
+    </form>
+    <form (submit)='solution()'>
+        <button type="submit" value="Démarrer">Solution (1 déplacement toutes les {{nb_deplacement_par_milli}} milli sec) </button> <!--  [disabled]="start_en_cours" Ca ne marche pas dynamiquement ? -->
+    </form>
+   
+    <form (submit)='reset()'>
+        <button   type="submit" value="Reset" >Reset</button>
+    </form>
+
+    <form (submit)='pause()'>
+        <button   type="submit" value="Pause" >Pause</button>
+    </form>
+
+    <div [ngClass]="'jeu'">      
+        <app-tour [tourX]="tourA" [max]="max_disque" (dropTriggered)="drag_and_drop($event)" [idTour]=0></app-tour>
+        <app-tour [tourX]="tourB" [max]="max_disque" (dropTriggered)="drag_and_drop($event)" [idTour]=1></app-tour>
+        <app-tour [tourX]="tourC" [max]="max_disque" (dropTriggered)="drag_and_drop($event)" [idTour]=2></app-tour>    
+    </div>
+
+    <div id="id_progression">
+        <div>Déplacements {{deplacement_en_cours}}</div>
+        <label for="progression">{{pourcentage}}%</label>
+        <progress id="progression" max="100" value={{pourcentage}}>  </progress>
+        <div>Temps écoulé hh:mn:ss  {{duree_milli}} </div>
+    </div>
+
+</div>
